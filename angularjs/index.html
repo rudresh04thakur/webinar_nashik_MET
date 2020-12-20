@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>AngularJs CRUD operations demo example</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="js/crud.js"></script>
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <title>AngularJs CRUD</title>
+</head>
+
+<body ng-app="student">
+  <div class="wrap">
+    <nav class="navbar navbar-expand-sm bg-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/data">Data</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div ng-controller="studentCtrl">
+      <form class="form col-md-6 offset-md-3">
+        <input class="" ng-model="s.roll" name="roll" type="hidden">
+       
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" placeholder="Name" ng-model="s.name" name="name" type="text">
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input class="form-control" placeholder="Address" ng-model="s.addr" name="addr" type="text">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" name="email" placeholder="Email" ng-model="s.email" type="email">
+        </div>
+        <div class="float-right">
+          <button type="button" ng-click="save()" class="btn btn-success">Save</button>
+        </div>
+        <div class="clearfix"></div>
+      </form>
+      <table style="margin-top: 20px;" class="table stable-stripped">
+        <thead>
+          <tr>
+            <td>Roll</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="ss in students">
+            <td>{{ss.roll}}</td>
+            <td>{{ss.name}}</td>
+            <td>{{ss.email}}</td>
+            <td>
+              <a ref="#" ng-click="edit(ss.roll)" class="btn btn-success">E</a>
+              <a ref="#" ng-click="delete(ss.roll)" class="btn btn-danger">D</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</body>
+
+</html>
